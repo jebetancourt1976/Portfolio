@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  review-classifier:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: review-classifier-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount model file (optional - already copied in Dockerfile)
+      - ./student_distilbert.pth:/app/student_distilbert.pth:ro
+      # Mount app for development (comment out for production)
+      # - ./app:/app/app:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - classifier-network
+
+networks:
+  classifier-network:
+    driver: bridge
+
+# Made with Bob

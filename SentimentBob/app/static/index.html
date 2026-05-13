@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Review Classifier</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Customer Review Classifier</h1>
+            <p class="subtitle">AI-powered review classification using DistilBERT</p>
+        </header>
+
+        <div class="status-bar" id="statusBar">
+            <span class="status-indicator" id="statusIndicator">●</span>
+            <span id="statusText">Checking system status...</span>
+        </div>
+
+        <!-- Single Review Classification -->
+        <section class="card">
+            <h2>📝 Classify Single Review</h2>
+            <form id="singleForm">
+                <div class="form-group">
+                    <label for="singleReview">Enter customer review:</label>
+                    <textarea 
+                        id="singleReview" 
+                        name="text" 
+                        rows="4" 
+                        placeholder="e.g., Great service, thank you!"
+                        maxlength="512"
+                        required
+                    ></textarea>
+                    <small class="char-count" id="charCount">0 / 512 characters</small>
+                </div>
+                <button type="submit" class="btn btn-primary" id="classifyBtn">
+                    <span class="btn-text">Classify Review</span>
+                    <span class="spinner" style="display: none;"></span>
+                </button>
+            </form>
+            
+            <div id="singleResult" class="result-container" style="display: none;">
+                <h3>Classification Result:</h3>
+                <div class="result-card">
+                    <div class="result-text" id="resultText"></div>
+                    <div class="result-details">
+                        <span class="label-badge" id="resultLabel"></span>
+                        <span class="confidence" id="resultConfidence"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Batch Classification -->
+        <section class="card">
+            <h2>📊 Batch Classification</h2>
+            <form id="batchForm">
+                <div class="form-group">
+                    <label for="batchReviews">Enter multiple reviews (one per line, max 100):</label>
+                    <textarea 
+                        id="batchReviews" 
+                        name="reviews" 
+                        rows="8" 
+                        placeholder="Great service, thank you!&#10;My device won't turn on&#10;I want my money back immediately"
+                        required
+                    ></textarea>
+                    <small class="review-count" id="reviewCount">0 reviews</small>
+                </div>
+                <button type="submit" class="btn btn-secondary" id="batchBtn">
+                    <span class="btn-text">Classify Batch</span>
+                    <span class="spinner" style="display: none;"></span>
+                </button>
+            </form>
+            
+            <div id="batchResult" class="result-container" style="display: none;">
+                <h3>Batch Results (<span id="totalProcessed">0</span> reviews):</h3>
+                <div class="table-container">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Review Text</th>
+                                <th>Classification</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Label Legend -->
+        <section class="card legend-card">
+            <h2>🏷️ Classification Labels</h2>
+            <div class="legend-grid" id="legendGrid">
+                <div class="legend-item">
+                    <span class="label-badge label-0">General Inquiry</span>
+                    <span class="legend-desc">Questions about products, shipping, etc.</span>
+                </div>
+                <div class="legend-item">
+                    <span class="label-badge label-1">Product Issue</span>
+                    <span class="legend-desc">Problems with product quality or functionality</span>
+                </div>
+                <div class="legend-item">
+                    <span class="label-badge label-2">Refund Issue</span>
+                    <span class="legend-desc">Refund requests or payment problems</span>
+                </div>
+                <div class="legend-item">
+                    <span class="label-badge label-3">Cancellation</span>
+                    <span class="legend-desc">Service or subscription cancellation requests</span>
+                </div>
+                <div class="legend-item">
+                    <span class="label-badge label-4">Praise</span>
+                    <span class="legend-desc">Positive feedback and compliments</span>
+                </div>
+                <div class="legend-item">
+                    <span class="label-badge label-5">Technical Support</span>
+                    <span class="legend-desc">Technical issues and support requests</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Powered by DistilBERT • Built with FastAPI</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
