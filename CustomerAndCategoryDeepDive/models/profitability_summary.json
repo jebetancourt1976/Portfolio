@@ -1,0 +1,22 @@
+{
+  "analysis_date": "2026-06-17",
+  "total_categories": 5,
+  "total_subcategories": 25,
+  "total_revenue": 33907441.71,
+  "total_profit": 5531741.76,
+  "overall_margin_pct": 16.314241007361446,
+  "best_category": {
+    "name": "Apparel",
+    "margin_pct": 34.950035116526614,
+    "profit": 1804368.97
+  },
+  "worst_category": {
+    "name": "Grocery & Essentials",
+    "margin_pct": 2.9515081990529124,
+    "profit": 37011.7
+  },
+  "categories_gaining": 0,
+  "categories_losing": 1,
+  "at_risk_subcategories": 10,
+  "recommendations_count": 3
+}

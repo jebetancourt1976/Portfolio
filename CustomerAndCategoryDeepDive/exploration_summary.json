@@ -1,0 +1,42 @@
+{
+  "exploration_date": "2026-06-17",
+  "datasets": {
+    "customers": {
+      "rows": 18000,
+      "columns": 6
+    },
+    "transactions": {
+      "rows": 256762,
+      "columns": 13
+    },
+    "products": {
+      "rows": 1200,
+      "columns": 8
+    },
+    "web_sessions": {
+      "rows": 90000,
+      "columns": 6
+    },
+    "stores": {
+      "rows": 12,
+      "columns": 5
+    },
+    "marketing_spend": {
+      "rows": 312,
+      "columns": 4
+    }
+  },
+  "key_metrics": {
+    "churn_rate": "25.84%",
+    "total_revenue_net": "$34,180,696.48",
+    "avg_discount": "13.44%",
+    "cart_abandonment": "18.25%",
+    "unique_customers": 18000,
+    "unique_products": 1200
+  },
+  "data_quality": {
+    "missing_customer_links": 1,
+    "missing_product_links": 0,
+    "calculation_mismatches": 0
+  }
+}

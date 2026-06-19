@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  rag-app:
+    build: .
+    container_name: multi-policy-rag
+    ports:
+      - "7860:7860"
+    volumes:
+      # Mount PDF documents as read-only
+      - ./data/pdfs:/app/data/pdfs:ro
+      # Mount FAISS indexes as read-write for persistence
+      - ./data/faiss_indexes:/app/data/faiss_indexes:rw
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:7860')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Made with Bob

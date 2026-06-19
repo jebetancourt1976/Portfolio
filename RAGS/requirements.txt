@@ -1,0 +1,24 @@
+# Core LangChain Dependencies
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.20
+langchain-text-splitters>=0.0.1
+
+# Vector Store
+faiss-cpu>=1.7.4
+
+# LLM Provider
+openai>=1.0.0
+
+# Web Interface
+gradio>=4.0.0
+
+# Configuration Management
+python-dotenv>=1.0.0
+
+# PDF Processing
+PyMuPDF>=1.23.0
+
+# Utilities
+tiktoken>=0.5.0
